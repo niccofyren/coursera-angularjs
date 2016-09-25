@@ -30,51 +30,51 @@
 			<div class="row">
 
 				<!-- To Buy List -->
-				<div class="col-md-6" ng-controller="ToBuyShoppingController">
+				<div class="col-md-6" ng-controller="ToBuyShoppingController as toBuyCtrl">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">To Buy:</h2>
 						</div>
-						<ul class="list-group" ng-if="!!items.length">
-							<li ng-repeat="item in items" class="list-group-item clearfix">
+						<ul class="list-group" ng-if="!!toBuyCtrl.items.length">
+							<li ng-repeat="item in toBuyCtrl.items" class="list-group-item clearfix">
 								Buy {{ item.quantity }} {{ item.name }}
-								<button class="btn btn-default pull-right" ng-click="buyItem($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+								<button class="btn btn-default pull-right" ng-click="toBuyCtrl.buyItem($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button>
 							</li>
 						</ul>
-						<div ng-if="!items.length" class="emptyMessage panel-body">Everything is bought!</div>
+						<div ng-if="!toBuyCtrl.items.length" class="emptyMessage panel-body">Everything is bought!</div>
 					</div>
 				</div>
 
 				<!-- Already Bought List -->
-				<div class="col-md-6" ng-controller="AlreadyBoughtShoppingController">
+				<div class="col-md-6" ng-controller="AlreadyBoughtShoppingController as boughtCtrl">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h2 class="panel-title">Already Bought:</h2>
 						</div>
-						<ul class="list-group" ng-if="!!items.length">
-							<li ng-repeat="item in items" class="list-group-item clearfix">
+						<ul class="list-group" ng-if="!!boughtCtrl.items.length">
+							<li ng-repeat="item in boughtCtrl.items" class="list-group-item clearfix">
 								Bought {{ item.quantity }} {{ item.name }}
-								<button class="btn btn-default pull-right" ng-click="returnItem($index)"><span class="glyphicon glyphicon-trash"></span> Returned</button>
+								<button class="btn btn-default pull-right" ng-click="boughtCtrl.returnItem($index)"><span class="glyphicon glyphicon-trash"></span> Returned</button>
 							</li>
 						</ul>
-						<div ng-if="!items.length" class="emptyMessage panel-body">Nothing bought yet.</div>
+						<div ng-if="!boughtCtrl.items.length" class="emptyMessage panel-body">Nothing bought yet.</div>
 					</div>
 				</div>
 
 			</div>
 
 			<!-- New item form -->
-			<div class="panel panel-default" ng-controller="NewItemController">
+			<div class="panel panel-default" ng-controller="NewItemController as newItemCtrl">
 				<div class="panel-heading">
 					<h2 class="panel-title">Add new item:</h2>
 				</div>
 				<div class="panel-body">
-					<form ng-submit="addItem()">
+					<form ng-submit="newItemCtrl.addItem()">
 						<div class="form-group">
-							<label for="name">Name:</label><input ng-model="name" class="form-control" type="text" name="name" placeholder="Item name in plural">
+							<label for="name">Name:</label><input ng-model="newItemCtrl.name" class="form-control" type="text" name="name" placeholder="Item name in plural">
 						</div>
 						<div class="form-group">
-							<label for="quantity">Quantity:</label><input ng-model="quantity" class="form-control" type="number" max="999" min="1" name="quantity">
+							<label for="quantity">Quantity:</label><input ng-model="newItemCtrl.quantity" class="form-control" type="number" max="999" min="1" name="quantity">
 						</div>
 						<input type="submit" value="Add item" class="btn btn-primary"/>
 					</form>
