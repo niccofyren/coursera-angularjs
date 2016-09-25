@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+	<head>
+		<title>Shopping List Check Off</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="styles/bootstrap.min.css">
+		<style>
+		.emptyMessage {
+			font-weight: bold;
+			color: red;
+			font-size: 1.2em;
+		}
+		li {
+		  margin-bottom: 7px;
+		  font-size: 1.2em;
+		}
+		li > button {
+		  margin-left: 6px;
+		}
+		button > span {
+		  color: green;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Shopping List Check Off</h1>
+			<hr />
+
+			<div class="row">
+
+				<!-- To Buy List -->
+				<div class="col-md-6" ng-controller="ToBuyShoppingController">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 class="panel-title">To Buy:</h2>
+						</div>
+						<ul class="list-group" ng-if="!!items.length">
+							<li ng-repeat="item in items" class="list-group-item clearfix">
+								Buy {{ item.quantity }} {{ item.name }}
+								<button class="btn btn-default pull-right" ng-click="buyItem($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+							</li>
+						</ul>
+						<div ng-if="!items.length" class="emptyMessage panel-body">Everything is bought!</div>
+					</div>
+				</div>
+
+				<!-- Already Bought List -->
+				<div class="col-md-6" ng-controller="AlreadyBoughtShoppingController">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 class="panel-title">Already Bought:</h2>
+						</div>
+						<ul class="list-group" ng-if="!!items.length">
+							<li ng-repeat="item in items" class="list-group-item clearfix">
+								Bought {{ item.quantity }} {{ item.name }}
+								<button class="btn btn-default pull-right" ng-click="returnItem($index)"><span class="glyphicon glyphicon-trash"></span> Returned</button>
+							</li>
+						</ul>
+						<div ng-if="!items.length" class="emptyMessage panel-body">Nothing bought yet.</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- New item form -->
+			<div class="panel panel-default" ng-controller="NewItemController">
+				<div class="panel-heading">
+					<h2 class="panel-title">Add new item:</h2>
+				</div>
+				<div class="panel-body">
+					<form ng-submit="addItem()">
+						<div class="form-group">
+							<label for="name">Name:</label><input ng-model="name" class="form-control" type="text" name="name" placeholder="Item name in plural">
+						</div>
+						<div class="form-group">
+							<label for="quantity">Quantity:</label><input ng-model="quantity" class="form-control" type="number" max="999" min="1" name="quantity">
+						</div>
+						<input type="submit" value="Add item" class="btn btn-primary"/>
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+		<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="app.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
