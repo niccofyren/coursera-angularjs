@@ -1,0 +1,26 @@
+<div class="panel" ng-class="{ 'panel-danger': !foundItems.length, 'panel-primary': foundItems.length }">
+	<div class="panel-heading">
+		<h3 class="panel-title">Found {{ foundItems.length }} item(s):</h3>
+	</div>
+	<table class="table table-striped" ng-if="foundItems.length">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in foundItems">
+				<td>{{ item.name }} ({{ item.short_name }})</td>
+				<td>{{ item.description }}</td>
+				<td>
+					<button ng-click="onRemove({ index: $index })" class="btn btn-default pull-right">Don't want this one!</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="panel-body" ng-if="!foundItems.length">
+		Nothing found
+	</div>
+</div>
