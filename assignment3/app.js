@@ -37,13 +37,17 @@
 		ctrl.found = [];
 
 		ctrl.getMatchedMenuItems = function () {
-			var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+			if(ctrl.searchTerm) {
+				var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
 
-			promise.then(function (result) {
-				ctrl.found = result;
-			}, function (error) {
-				console.log("Error loading menu choices: ", error);
-			});
+				promise.then(function (result) {
+					ctrl.found = result;
+				}, function (error) {
+					console.log("Error loading menu choices: ", error);
+				});
+			} else {
+				ctrl.found = [];
+			}
 		};
 
 		ctrl.removeItem = function (index) {
