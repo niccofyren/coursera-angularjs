@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app='MenuApp'>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<title>Assignment 4</title>
+	</head>
+	<body style="padding: 70px 0">
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<ul class="nav navbar-nav">
+					<li>
+						<a ui-sref="home">Home</a>
+					</li>
+					<li>
+						<a ui-sref="categories">Categories</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="container">
+			<ui-view></ui-view>
+		</div>
+
+		<!-- Libraries -->
+		<script src="lib/angular.min.js"></script>
+		<script src="lib/angular-ui-router.min.js"></script>
+
+		<!-- Modules -->
+		<script src="src/menuapp/menuapp.module.js"></script>
+		<script src="src/data/data.module.js"></script>
+
+		<!-- Routes -->
+		<script src="src/routes.js"></script>
+
+		<!-- Atomics: data -->
+		<script src="src/data/menudata.service.js"></script>
+
+		<!-- Atomics: MenuApp -->
+		<script src="src/menuapp/categories.controller.js"></script>
+		<script src="src/menuapp/categories.component.js"></script>
+		<script src="src/menuapp/items.controller.js"></script>
+		<script src="src/menuapp/items.component.js"></script>
+
+	</body>
+</html>

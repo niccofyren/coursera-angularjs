@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Menu items in the {{ $ctrl.name }} category</h3>
+		</div>
+		<ul ng-repeat="item in $ctrl.items" class="list-group">
+			<li class="list-group-item"><strong>{{ item.name }}</strong> {{ item.description }}</li>
+		</ul>
+	</div>
+</div>
+<button class="btn btn-default pull-right" ui-sref="categories">Back to category overview</button>
